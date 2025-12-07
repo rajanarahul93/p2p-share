@@ -31,7 +31,6 @@ export class FileTransferManager {
   private isEncryptionReady = false;
 
   // Speed tracking
-  private transferStartTime = 0;
   private lastProgressTime = 0;
   private lastTransferredBytes = 0;
 
@@ -126,7 +125,6 @@ export class FileTransferManager {
     this.currentChunkIndex = 0;
     this.totalChunks = queued.info.totalChunks;
     this.isPaused = false;
-    this.transferStartTime = Date.now();
     this.lastProgressTime = Date.now();
     this.lastTransferredBytes = 0;
 
@@ -274,7 +272,6 @@ export class FileTransferManager {
 
       this.receivingFiles.set(fileInfo.id, metadata);
       this.currentReceiveFileId = fileInfo.id;
-      this.transferStartTime = Date.now();
       this.lastProgressTime = Date.now();
       this.lastTransferredBytes = 0;
 
